@@ -1,0 +1,17 @@
+<div style="text-align: center" class="container">
+  <h1>Services</h1>
+  <div style="text-align: left" class="alert alert-secondary" role="alert">
+    Choisissez les élèments à inclure
+    <br>
+    <strong>{{model.countActive}} services sélectionnés</strong>
+  </div>
+
+  <ul class="list-group">
+    {{#each model.services as |service|}}
+      {{#if service.active}}
+        <li class="list-group-item">Dapibus ac facilisis in</li>
+      {{/if}}
+    {{/each}}
+  </ul>
+</div>
+{{outlet}}
