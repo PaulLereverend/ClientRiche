@@ -1,0 +1,20 @@
+<br>
+<div class="container">
+  {{textarea value=model.content class="form-control" maxlength=model.max}}
+<br>
+<div class="alert {{model.style}}" role="alert">
+  Nombre de caractères : {{model.size}}
+</div>
+  <button class="btn btn-primary"{{action "clear" this.model}}>Effacer</button>
+  <button class="btn btn-primary"{{action "save" this.model}}>Sauvegarder</button>
+  {{#if model.alertVisible}}
+    <div class="alert alert-success alert-dismissible fade show" role="alert" style="margin-top: 20px">
+      {{model.info}}
+      <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+        <span aria-hidden="true">&times;</span>
+      </button>
+    </div>
+  {{/if}}
+</div>
+
+{{outlet}}
