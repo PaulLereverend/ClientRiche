@@ -9,9 +9,13 @@
   <ul class="list-group">
     {{#each model.services as |service|}}
       {{#if service.active}}
-        <li class="list-group-item">Dapibus ac facilisis in</li>
+        <a href="#" class="list-group-item list-group-item-action active">{{service.name}} - {{service.price}} €</a>
+      {{else}}
+        <a href="#" class="list-group-item list-group-item-action">{{service.name}} - {{service.price}} €</a>
       {{/if}}
+
     {{/each}}
+    
   </ul>
 </div>
 {{outlet}}
