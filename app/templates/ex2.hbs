@@ -9,14 +9,16 @@
   <ul class="list-group">
     {{#each model.services as |service|}}
       {{#if service.active}}
-        <a href="#" class="list-group-item list-group-item-action active">{{service.name}} - {{service.price}} €</a>
+        <a {{action "toggleActive" service}} class="list-group-item list-group-item-action active">{{service.name}} - {{service.price}} €</a>
       {{else}}
-        <a href="#" class="list-group-item list-group-item-action">{{service.name}} - {{service.price}} €</a>
+        <button {{action "toggleActive" service}}><a class="list-group-item list-group-item-action">{{service.name}} - {{service.price}} €</a></button>
       {{/if}}
-
     {{/each}}
 
   </ul>
-  
+  <hr>
+  <div style="text-align: left" class="alert alert-secondary" role="alert">
+    Total <strong>{{model.sumActive}} €</strong>
+  </div>
 </div>
 {{outlet}}

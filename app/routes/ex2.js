@@ -5,7 +5,7 @@ const Services = EmberObject.extend({
 
   services: [],
 
-  countActive: computed('services', function() {
+  countActive: computed('services.@each.active', function() {
     var tmp = 0;
     this.get('services').forEach(function (element) {
       if (element.active){
@@ -14,7 +14,7 @@ const Services = EmberObject.extend({
     })
     return tmp;
   }),
-  sumActive: computed('services', function() {
+  sumActive: computed('services.@each.active', function() {
     var tmp = 0;
     this.get('services').forEach(function (element) {
       if (element.active){
@@ -24,7 +24,6 @@ const Services = EmberObject.extend({
     return tmp;
   }),
 });
-
 
 export default Route.extend({
   model(){
