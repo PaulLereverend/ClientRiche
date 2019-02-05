@@ -10,7 +10,5 @@ export default Controller.extend({
         set(service, 'active', true);
       }
     }
-  },
-
-
+  }
 });

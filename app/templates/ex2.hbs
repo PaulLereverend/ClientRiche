@@ -3,22 +3,37 @@
   <div style="text-align: left" class="alert alert-secondary" role="alert">
     Choisissez les élèments à inclure
     <br>
-    <strong>{{model.countActive}} services sélectionnés</strong>
+    <strong>{{model.countActive}} {{plural value=model.countActive text="service"}} {{plural value=model.countActive text="sélectionné"}}</strong>
   </div>
 
   <ul class="list-group">
     {{#each model.services as |service|}}
       {{#if service.active}}
-        <a {{action "toggleActive" service}} class="list-group-item list-group-item-action active">{{service.name}} - {{service.price}} €</a>
+        <a {{action "toggleActive" service}} class="list-group-item list-group-item-action active">{{service.name}} - {{format-currency service.price symbol="€"}}</a>
       {{else}}
-        <button {{action "toggleActive" service}}><a class="list-group-item list-group-item-action">{{service.name}} - {{service.price}} €</a></button>
+        <a {{action "toggleActive" service}} class="list-group-item list-group-item-action">{{service.name}} - {{format-currency service.price symbol="€"}}</a>
       {{/if}}
     {{/each}}
 
   </ul>
   <hr>
   <div style="text-align: left" class="alert alert-secondary" role="alert">
-    Total <strong>{{model.sumActive}} €</strong>
+    Total <strong>{{ format-currency model.sumActive symbol="€"}}</strong>
   </div>
+  <div class="input-group mb-3">
+    <div class="input-group-prepend">
+      <div class="input-group-text">
+        {{input type="checkbox" checked=model.checked}}
+
+      </div>
+    </div>
+    {{input value=model.inputPromo class="form-control" type="text"}}
+  </div>
+  <div style="text-align: left" class="alert alert-secondary" role="alert">
+    Réduction de <strong>{{ format-currency model.reduction symbol="€"}}</strong>
+  </div> <div style="text-align: left" class="alert alert-secondary" role="alert">
+  Total après réduction <strong>{{ format-currency model.affichePromo symbol="€"}}</strong>
 </div>
+</div>
+
 {{outlet}}
